@@ -1,1 +1,9 @@
-<hi>Adminstrator</hi>
+@extends('layouts.admin')
+
+
+
+@section('content')
+
+    <h1>Admin Index</h1>
+
+@stop

@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration
             $table->integer('status_id')->index()->default(1);
             $table->integer('role_id')->index()->default(0);
             $table->integer('country_id')->index()->default(114);
-            $table->integer('category_id');
+            $table->integer('category_id')->unasigned()->nullable()->index();
+            $table->integer('photo_id')->unasigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
