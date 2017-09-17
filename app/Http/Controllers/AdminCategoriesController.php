@@ -54,9 +54,9 @@ class AdminCategoriesController extends Controller
 
         if($file =$request->file('photo_id')){  // to check if the file is uploaded
 
-            $name = time().$file->getClientOriginalName();  // here you can Rename as you wish
+            $name = '/images/categories/'.time().$name.$file->getClientOriginalName();  // here you can Rename as you wish
 
-            $file->move('images',$name); // move the File to the Desired destination
+            $file->move('images/categories',$name); // move the File to the Desired destination
             // ypu may wanna Consider Different Locations for Diffrent types such as userpics/posts ,, etc and Also to make sure its
             // a file not a different file , and resize it into desired size
             // and Delete the Previous one if exists.
@@ -82,7 +82,7 @@ class AdminCategoriesController extends Controller
     public function show($id)
     {
         //
-        return view('admin.categories.edit');
+
     }
 
     /**
@@ -93,7 +93,8 @@ class AdminCategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -105,7 +106,20 @@ class AdminCategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $name =  $request->name;
+        $category = Category::findOrFail($id);
+
+       if ($file =$request->file('photo_id')){
+           $name = '/images/categories/'.time().$name.$file->getClientOriginalName();
+           $file->move('images/categories',$name);
+           $photo = Photo::create(['path'=>$name]);
+           $input['photo_id']=$photo->id;
+       }
+
+        $category->update($input);
+        return redirect('admin/categories');
+
     }
 
     /**
@@ -116,6 +130,14 @@ class AdminCategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::findOrFail($id);
+
+        unlink(public_path().$category->photo->path);  // to Delete the Post Image when Deleting
+
+        $category->delete();
+
+        //   Session::flash('deleted_post','The Post has been Deleted');
+
+        return redirect('/admin/categories');
     }
 }

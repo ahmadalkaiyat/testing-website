@@ -6,7 +6,7 @@
 
     <h1>Categories</h1>
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-5">
         {!! Form::open(['method'=>'POST', 'action'=> 'AdminCategoriesController@store','files'=>true]) !!}
 
         <div class="form-group">
@@ -35,9 +35,13 @@
 
         </div>
 
+        <div>
+            @include('includes.form_error')
+        </div>
+
     </div>
 
-    <div class="col-sm-8">
+    <div class="col-sm-7">
 
         @if($categories)
 
@@ -57,7 +61,7 @@
                     <tr>
                         <td>{{$category->id}}</td>
                         <td><a href="{{route('categories.edit',$category->id)}}"> {{$category->name}}</a></td>
-                        <td><img height="80" width="80" src="{{$category->photo ? "/images/".$category->photo->path : 'http://placehold.it/50x50'}}"></td>
+                        <td><img height="80" width="80" src="{{$category->photo ? $category->photo->path : 'http://placehold.it/50x50'}}"></td>
                         <td>{{$category->is_for_shop}}</td>
                         <td>{{ $category->created_at ? $category->created_at->diffForHumans():'no date' }}</td>
                     </tr>
@@ -70,12 +74,10 @@
 
 </div>
 
-    <div class="row">
 
-        <div class="col-sm-6">
-        @include('includes.form_error')
-        </div>
-    </div>
+
+
+
 
 @stop
 

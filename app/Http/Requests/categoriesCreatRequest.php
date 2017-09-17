@@ -26,7 +26,7 @@ class categoriesCreatRequest extends FormRequest
         return [
             //
             'name'         =>'required',
-          //  'photo_id'    =>'required | mimes:jpeg,jpg,png | max:1000'
+         //   'photo_id'    =>'required | mimes:jpeg,jpg,png | max:1000'
         ];
     }
 
@@ -35,7 +35,7 @@ class categoriesCreatRequest extends FormRequest
         return [
             'name.required'=>'Please Insert a Category Name.',
             'photo_id.required'=>'Please Select an Image for the Category.',
-            'photo_id.mimes'=>'The Image must be a file of type: jpeg, jpg, png .',
+          //  'photo_id.mimes'=>'The Image must be a file of type: jpeg, jpg, png .',
 
         ];
     }
