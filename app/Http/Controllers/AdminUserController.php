@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Country;
+use App\Http\Requests\CreateUsersRequests;
 use App\photo;
 use App\Role;
 use App\Status;
@@ -32,7 +33,12 @@ class AdminUserController extends Controller
     public function create()
     {
         //
-        return view('admin.users.create');
+        $roles = Role::pluck('name','id')->all();
+        $status = Status::pluck('name','id')->all();
+        $category = Category::pluck('name','id')->all();
+        $country = Country::pluck('name','id')->all();
+
+        return view('admin.users.create' , compact('roles','status','category','country'));
     }
 
     /**
@@ -41,9 +47,26 @@ class AdminUserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUsersRequests $request)
     {
-        //
+        $input  = $request->all();    //to ge the Input from the Web
+        $name =  $request->id;
+        if ( $file = $request->file('photo_id') ){   // check if the Photo Exists
+
+            $name = '/images/users/'.time().$name;
+
+            $file->move('images/users',$name);
+
+            $photo = photo::create(['path'=>$name]);
+
+            $input['photo_id']=$photo->id;
+
+        }
+
+        $input['password'] = bcrypt($request->password); // to decrypt the PAssword
+         User::create($input);
+
+         return redirect('admin/users');
     }
 
     /**
@@ -86,7 +109,7 @@ class AdminUserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::findOrFail($id);
-        $name =  $request->name;
+        $name =  $request->id;
 
         if (trim($request->password )== ''){
             $input = $request->except('password');
@@ -99,7 +122,7 @@ class AdminUserController extends Controller
 
         if ($file = $request->file('photo_id')){
 
-            $name = '/images/users/'.time().$name.$file->getClientOriginalName();
+            $name = '/images/users/'.time().$name;
             $file->move('images/users',$name);
 
             $photo =Photo::create(['path'=>$name]);
@@ -121,6 +144,14 @@ class AdminUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        unlink(public_path().$user->photo->path);  // to Delete the Post Image when Deleting
+
+        $user->delete();
+
+        //   Session::flash('deleted_post','The Post has been Deleted');
+
+        return redirect('/admin/users');
     }
 }

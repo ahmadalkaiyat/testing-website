@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('status_id')->index()->default(1);
-            $table->integer('role_id')->index()->default(0);
+            $table->integer('status_id')->index()->default(4);
+            $table->integer('role_id')->index()->default(4);
             $table->integer('country_id')->index()->default(114);
             $table->integer('category_id')->unasigned()->nullable()->index();
             $table->integer('photo_id')->unasigned()->nullable();
