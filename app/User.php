@@ -38,6 +38,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Photo');
     }
 
+    public function section()
+    {
+        return $this->hasMany('App\Section');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
