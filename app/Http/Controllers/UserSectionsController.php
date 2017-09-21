@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\section;
 use App\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserSectionsController extends Controller
 {
@@ -16,7 +17,9 @@ class UserSectionsController extends Controller
     public function index()
     {
         //
-        $sections=Section::all();
+
+        $user = Auth::user();
+        $sections= $user->section;
         $status = Status::pluck('name','id')->all();
 
         return view('user.sections.index',compact('sections','status'));
@@ -41,7 +44,11 @@ class UserSectionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input =  $request ->all(); // assign the Request to a variable
+
+        $user = Auth::user();  // to get the logged in user
+        $user->section()->create($input);
+        return redirect('/user/sections');
     }
 
     /**
