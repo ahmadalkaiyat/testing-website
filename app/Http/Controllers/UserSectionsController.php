@@ -70,7 +70,11 @@ class UserSectionsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $section =Section::findOrFail($id);
+        $status = Status::pluck('name','id')->all();
+
+        return view('user.sections.edit',compact('section','status'));
+
     }
 
     /**
@@ -82,7 +86,9 @@ class UserSectionsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input =$request->all();
+        Auth::user()->section()->whereId($id)->first()->update($input)  ;
+        return redirect('/user/sections');
     }
 
     /**
@@ -93,6 +99,8 @@ class UserSectionsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $input = Section::findOrFail($id);
+        $input->delete();
+        return redirect('/user/sections');
     }
 }
