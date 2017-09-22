@@ -111,6 +111,9 @@ class AdminCategoriesController extends Controller
         $category = Category::findOrFail($id);
 
        if ($file =$request->file('photo_id')){
+
+           unlink(public_path().$category->photo->path);  // to Delete the Post Image when Deleting
+
            $name = '/images/categories/'.time().$name.$file->getClientOriginalName();
            $file->move('images/categories',$name);
            $photo = Photo::create(['path'=>$name]);

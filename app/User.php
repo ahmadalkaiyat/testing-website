@@ -43,6 +43,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Section');
     }
 
+    public function post()
+    {
+        return $this->hasMany('App\Post');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

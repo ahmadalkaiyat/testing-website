@@ -122,6 +122,8 @@ class AdminUserController extends Controller
 
         if ($file = $request->file('photo_id')){
 
+            unlink(public_path().$user->photo->path);  // to Delete the Post Image when Deleting
+
             $name = '/images/users/'.time().$name;
             $file->move('images/users',$name);
 
