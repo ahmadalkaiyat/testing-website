@@ -48,6 +48,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
 
+    public function branch()
+    {
+        return $this->hasMany('App\Branch');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

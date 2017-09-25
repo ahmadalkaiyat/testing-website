@@ -143,6 +143,14 @@
                                 <a href="{{route('users.create')}}">Create User</a>
                             </li>
 
+                            <li>
+                                <a href="{{route('branches.index')}}">All Branches</a>
+                            </li>
+
+                            <li>
+                                <a href="{{route('branches.create')}}">Create Branch</a>
+                            </li>
+
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
