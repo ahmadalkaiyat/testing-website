@@ -4,7 +4,7 @@
 
     <h1>Create Branch</h1>
 
-    <div class="row">
+    <div class="col-sm-10">
 
         {!! Form::open(['method'=>'POST', 'action'=> 'AdminBranchesController@store','files'=>true]) !!}
 

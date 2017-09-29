@@ -145,12 +145,21 @@
 
                             <li>
                                 <a href="{{route('branches.index')}}">All Branches</a>
-                            </li>
+                            </  >
 
                             <li>
                                 <a href="{{route('branches.create')}}">Create Branch</a>
                             </li>
 
+                            <li>
+                                <a href="{{route('contacts.index')}}">All Contacts Details</a>
+                            </li>
+                            <li>
+                                <a href="{{route('contacts.create')}}">Create Contact Details</a>
+                            </li>
+                            <li>
+                                <a href="{{route('sections.index')}}">Sections</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
@@ -185,18 +194,6 @@
                         <!-- /.nav-second-level -->
                     </li>
 
-                    <li>
-                        <a href="#"><i class="fa fa-wrench fa-fw"></i>Sections<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{route('sections.index')}}">All Sections</a>
-                            </li>
-
-
-
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
 
 
 

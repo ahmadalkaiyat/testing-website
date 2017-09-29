@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Branch');
     }
 
+    public function contact()
+    {
+        return $this->hasMany('App\Contact');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

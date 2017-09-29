@@ -33,5 +33,9 @@ Route::resource('admin/posts','AdminPostsController');
 
 Route::resource('admin/branches','AdminBranchesController');
 
+
+Route::resource('admin/contacts','AdminContactsController');
+
+
 Route::resource('user/sections','UserSectionsController');
 

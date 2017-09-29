@@ -11,7 +11,7 @@
             @include('includes.form_error')
         </div>
 
-        <div class="col-sm-9">
+        <div class="col-sm-10">
 
             {!! Form::open(['method'=>'POST', 'action'=> 'AdminUserController@store','files'=>true]) !!}
 
