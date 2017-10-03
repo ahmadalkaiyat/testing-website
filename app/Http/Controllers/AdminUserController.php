@@ -106,7 +106,7 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return array
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id  )
     {
         $user = User::findOrFail($id);
         $name =  $request->id;
@@ -120,10 +120,13 @@ class AdminUserController extends Controller
 
         //  $input = $request->all();
 
+
+
         if ($file = $request->file('photo_id')){
 
+            if (!empty($user->photo->path)){
             unlink(public_path().$user->photo->path);  // to Delete the Post Image when Deleting
-
+                                           }
             $name = '/images/users/'.time().$name;
             $file->move('images/users',$name);
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Http\Requests\CreateContactRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -35,7 +36,7 @@ class AdminContactsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateContactRequest $request)
     {
         $user = Auth::user();
         $input  = $request->all();    //to ge the Input from the Web
@@ -78,7 +79,7 @@ class AdminContactsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateContactRequest $request, $id)
     {
         $contact = Contact::findOrFail($id);
         $input =$request->all();

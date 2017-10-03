@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Branch;
+use App\Http\Requests\CreateBranchRequest;
 use App\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,7 @@ class AdminBranchesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateBranchRequest $request)
     {
         $input  = $request->all();
 
@@ -82,7 +83,7 @@ class AdminBranchesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateBranchRequest $request, $id)
     {
         $branch = Branch::findOrFail($id);
         $input =$request->all();
