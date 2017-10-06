@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserSectionsRequest;
 use App\section;
 use App\Status;
 use Illuminate\Http\Request;
@@ -42,7 +43,7 @@ class UserSectionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserSectionsRequest $request)
     {
         $input =  $request ->all(); // assign the Request to a variable
 
@@ -84,7 +85,7 @@ class UserSectionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserSectionsRequest $request, $id)
     {
         $input =$request->all();
         Auth::user()->section()->whereId($id)->first()->update($input)  ;

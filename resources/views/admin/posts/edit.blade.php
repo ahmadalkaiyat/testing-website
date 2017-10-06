@@ -9,6 +9,12 @@
 
     <div class="row">
 
+        <div class="row">
+
+            @include('includes.form_error')
+
+        </div>
+
         <div class="col-sm-4">
 
             <img src="{{$post->photo->path}}" alt=""  class="img-responsive">
@@ -70,10 +76,6 @@
 
     </div>
 
-    <div class="row">
 
-        @include('includes.form_error')
-
-    </div>
 
 @stop

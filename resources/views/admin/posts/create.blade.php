@@ -2,7 +2,15 @@
 
 @section('content')
 
+    <div class="row">
+
     <h1>Create Posts</h1>
+
+        <div class="row">
+
+            @include('includes.form_error')
+
+        </div>
 
     <div class="col-sm-10">
 
@@ -41,11 +49,7 @@
         </div>
         {!! Form::close() !!}
     </div>
-
-    <div class="row">
-
-        @include('includes.form_error')
-
     </div>
+
 
 @stop

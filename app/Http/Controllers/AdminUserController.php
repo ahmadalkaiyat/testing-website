@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Country;
 use App\Http\Requests\CreateUsersRequests;
+use App\Http\Requests\UpdateUserRequest;
 use App\photo;
 use App\Role;
 use App\Status;
@@ -106,7 +107,7 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return array
      */
-    public function update(Request $request, $id  )
+    public function update(UpdateUserRequest $request, $id  )
     {
         $user = User::findOrFail($id);
         $name =  $request->id;

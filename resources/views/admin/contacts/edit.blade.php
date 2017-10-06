@@ -9,6 +9,12 @@
 
     <div class="row">
 
+        <div class="row">
+
+            @include('includes.form_error')
+
+        </div>
+
         <div class="col-sm-8">
 
         {!! Form::model($contact, ['method'=>'PATCH', 'action'=> ['AdminContactsController@update', $contact->id], 'files'=>true]) !!}
@@ -66,10 +72,6 @@
 
     </div>
 
-    <div class="row">
 
-        @include('includes.form_error')
-
-    </div>
 
 @stop

@@ -2,7 +2,15 @@
 
 @section('content')
 
+    <div class="row">
+
     <h1>Create Branch</h1>
+
+        <div class="row">
+
+            @include('includes.form_error')
+
+        </div>
 
     <div class="col-sm-10">
 
@@ -48,11 +56,9 @@
             {!! Form::submit('Create Branch', ['class'=>'btn btn-primary']) !!}
         </div>
         {!! Form::close() !!}
+
         </div>
 
-    <div class="row">
-
-        @include('includes.form_error')
 
     </div>
 

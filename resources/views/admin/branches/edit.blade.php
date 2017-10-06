@@ -10,6 +10,13 @@
     <div class="row">
 
 
+        <div class="row">
+
+            @include('includes.form_error')
+
+        </div>
+
+
         <div class="col-sm-8">
 
         {!! Form::model($branch, ['method'=>'PATCH', 'action'=> ['AdminBranchesController@update', $branch->id], 'files'=>true]) !!}
@@ -68,10 +75,5 @@
 
 
 
-    <div class="row">
-
-        @include('includes.form_error')
-
-    </div>
 
 @stop

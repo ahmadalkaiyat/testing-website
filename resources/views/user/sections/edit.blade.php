@@ -6,6 +6,8 @@
 
     <h1>Edit Sections</h1>
 
+    <div class="row">
+
     <div class="col-sm-6">
         {!! Form::model($section, ['method'=>'PATCH', 'action'=> ['UserSectionsController@update', $section->id]]) !!}
 
@@ -27,11 +29,13 @@
         </div>
         {!! Form::close() !!}
 
-        <div class="row">
 
-            @include('includes.form_error')
 
-        </div>
+    </div>
+    </div>
+    <div class="col-sm-6">
+
+        @include('includes.form_error')
 
     </div>
 
