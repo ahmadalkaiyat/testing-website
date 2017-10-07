@@ -25,7 +25,7 @@ class UserSectionsRequest extends FormRequest
     {
         return [
             'name'         =>'required',
-            'status_is'    =>'required'
+            'status_id'    =>'required'
         ];
     }
 

@@ -52,9 +52,9 @@ class AdminPostsController extends Controller
         $name =  $request->id;
         if ( $file = $request->file('photo_id') ){   // check if the Photo Exists
 
-            $name = '/images/posts/'.time().$name;
+            $name = '/images/posts/'.Auth::user()->id.'/'.$request->section_id.'/'.time().$name;
 
-            $file->move('images/posts',$name);
+            $file->move('images/posts/'.Auth::user()->id.'/'.$request->section_id,$name);
 
             $photo = photo::create(['path'=>$name]);
 
@@ -101,9 +101,9 @@ class AdminPostsController extends Controller
 
             unlink(public_path().$post->photo->path);  // to Delete the Post Image when Deleting
 
-            $name = '/images/posts/'.time().$name;
+            $name = '/images/posts/'.Auth::user()->id.'/'.$request->section_id.'/'.time().$name;
 
-            $file->move('images/posts',$name);
+            $file->move('images/posts/'.Auth::user()->id.'/'.$request->section_id,$name);
 
             $photo = photo::create(['path'=>$name]);
 
